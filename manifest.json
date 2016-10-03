@@ -1,13 +1,26 @@
 {
-	"manifest_version" : 2,
-	"name" : "Unexpose",
-	"version" : "0.1",
-	"content_scripts" : [
+	"manifest_version": 2,
+	"name": "Unexpose",
+	"version": "0.1",
+	"browser_action": {
+		"default_title": "Unexpose",
+		"default_popup": "hover.html",
+		"default_icon": "unexpose_green.png"
+	},
+	"background": {
+		"scripts": [
+			"background.js"
+		]
+	},
+	"content_scripts": [
 		{
-			"matches" : [
+			"matches": [
 				"<all_urls>"
 			],
-			"js" : ["jquery-2.1.4.js", "unexpose.js"]
+			"js": [
+				"jquery-2.1.4.js", 
+				"unexpose.js"
+			]
 		}
 	]
 }

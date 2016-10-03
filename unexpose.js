@@ -25,6 +25,7 @@ var risk_words_h = ["Googling"];
 
 // Main Script Flow.
 var page_text = $('body').text();
+console.log(page_text);
 var low_risk_matches = 0;
 var medium_risk_matches = 0;
 var high_risk_matches = 0;
@@ -39,3 +40,24 @@ console.log("Low Risk Matches: " + low_risk_matches);
 console.log("Medium Risk Matches: " + medium_risk_matches);
 console.log("High Risk Matches: " + high_risk_matches);
 console.log("Total Risk Matches: " + total_risk_matches);
+
+if (total_risk_matches > 500) {
+	chrome.runtime.sendMessage({ 
+		"message": "unexpose_switch_icon",
+		"img": "unexpose_yellow.png" 
+	});
+}
+
+if (total_risk_matches > 700) {
+	chrome.runtime.sendMessage({ 
+		"message": "unexpose_switch_icon",
+		"img": "unexpose_orange.png" 
+	});
+}
+
+if (total_risk_matches > 1000) {
+	chrome.runtime.sendMessage({ 
+		"message": "unexpose_switch_icon",
+		"img": "unexpose_red.png" 
+	});
+}	
